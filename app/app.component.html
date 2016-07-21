@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+</head>
+<body>
+<h1>{{title}}</h1>
+<ul class="nav navbar-nav">
+    <li class="navbar-item">
+    <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li class="navbar-item">
+    <a [routerLink]="['/heroes']" routerLinkActive="active">Heroes</a>
+    </li>
+</ul>
+<router-outlet></router-outlet>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

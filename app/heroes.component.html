@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="../styles.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <h2>My Heroes</h2>
+  <!--
+<ul class="list-group" >
+  <div *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+    <span class="hero-element">
+      <li class="list-group-item">{{hero.id}} - {{hero.name}} </li>
+      <button class="delete-button btn-link" (click)="deleteHero(hero, $event)">Delete</button>
+    </span>
+    
+  </div>
+</ul>
+-->
+  <table class="table" border="0">
+    <thead>
+    </thead>
+    <tbody>
+      <div *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+       
+        <tr> 
+          <td>{{hero.id}} - {{hero.name}}</td>
+          <td><button class="btn-link display:inline-block"  (click)="deleteHero(hero, $event)">Delete</button></td>
+        </tr>
+   
+      </div>
+    </tbody>
+  </table>
+  <div class="error" *ngIf="error">{{error}}</div>
+  <button class="btn btn-primary" (click)="addHero()">Add New Hero</button>
+  <div *ngIf="addingHero">
+    <my-hero-detail (close)="close($event)"></my-hero-detail>
+  </div>
+  <div *ngIf="selectedHero">
+    <h2>
+      {{selectedHero.name | uppercase}} is my hero
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
