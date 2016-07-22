@@ -10,18 +10,18 @@
 </head>
 
 <body>
-    <h1>{{title}}</h1>
-    <nav>
+    <h2> Login Page</h2>
+    <fieldset class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" [(ngModel)]='reqBody.username' />
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]='reqBody.password' />
+    </fieldset>
 
-        <a [routerLink]="['login']" routerLinkActice="active">Login</a>
-        <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-
-        <a [routerLink]="['/heroes']" routerLinkActive="active">Heroes</a>
-
-    </nav>
-    <router-outlet></router-outlet>
+    <button type="button" class="btn btn-primary" (click)=onSubmit(reqBody.username,reqBody.password)>Submit</button>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

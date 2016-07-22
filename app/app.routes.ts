@@ -2,6 +2,7 @@ import { provideRouter, RouterConfig }  from '@angular/router';
 import { HeroesComponent } from './heroes.component';
 import {DashboardComponent} from './dashboard.component';
 import {HeroDetailComponent} from './hero-detail.component';
+import {LoginComponent} from './login.component';
 
 const routes: RouterConfig = [
   {
@@ -13,9 +14,13 @@ const routes: RouterConfig = [
     component: DashboardComponent
   },
   {
-  path: 'detail/:id',
-  component: HeroDetailComponent
-},
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'detail/:id',
+    component: HeroDetailComponent
+  },
 
 ];
 
