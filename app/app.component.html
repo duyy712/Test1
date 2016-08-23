@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,12 +13,8 @@
 <body>
     <h1>{{title}}</h1>
     <nav>
-
-        <a [routerLink]="['login']" routerLinkActice="active">Login</a>
-        <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-
-        <a [routerLink]="['/heroes']" routerLinkActive="active">Heroes</a>
-
+        <a [routerLink]="['/login']" routerLinkActice="active">Login</a>
+        <a [routerLink]="['/getReport']" routerLinkActice="active">Get Report</a>
     </nav>
     <router-outlet></router-outlet>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>

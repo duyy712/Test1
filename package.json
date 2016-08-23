@@ -1,7 +1,7 @@
 {
-  "name": "angular2-quickstart",
+  "name": "angular2-pentamicbi",
   "version": "1.0.0",
-  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "description": "Pentamic BI",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "docker-build": "docker build -t ng2-quickstart .",

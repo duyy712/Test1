@@ -1,44 +1,36 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Router} from '@angular/router';
-
-import {ReqBody} from './reqBody';
+import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class LoginService {
-    private loggedIn = false;
-    constructor(public router: Router, public http: Http) {
-        this.loggedIn = !!localStorage.getItem('auth_token');
+    token: string;
+    constructor(private router: Router, private http: Http) {
+        this.token = localStorage.getItem('access_token');
     }
-    reqBody: ReqBody;
-    urlServer: string = 'http://192.168.11.6:3009/token';
 
+    // urlServer: string = 'http://192.168.11.6:3009/token';
 
-    login(username: string, password: string) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        let body: string = 'grant_type: password' + 'username: ' + this.reqBody.username + 'password' + this.reqBody.password + 'client_id: webapp';
-        return this.http
-            .post(
-            this.urlServer,
-            JSON.stringify(body),
-            { headers }
-            )
-            .map(res => res.json())
-            .map((res) => {
-                if (res.success) {
-                    localStorage.setItem('auth_token', res.auth_token);
-                    this.loggedIn = true;
-                }
+    login(usr: string, pwd: string) {
 
-                return res.success;
+        return this.http.post('http://192.168.11.6:3011/token',
+            "grant_type=password&username=" + usr + "&password=" + pwd + "&client_id=webapp"
+            , {
+                headers: new Headers({
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                })
+            })
+            .map((res: any) => {
+                let data = res.json();
+                this.token = data.token;
+                localStorage.setItem('access_token', data.access_token);
+                if (res) console.log('Success');
+
+                // console.log(localStorage.getItem('access_token'));
             });
+    }
 
-    }
-    logout() {
-        localStorage.removeItem('auth_token');
-        this.loggedIn = false;
-    }
 }
 

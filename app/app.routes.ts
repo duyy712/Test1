@@ -1,29 +1,17 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
-import { HeroesComponent } from './heroes.component';
-import {DashboardComponent} from './dashboard.component';
-import {HeroDetailComponent} from './hero-detail.component';
 import {LoginComponent} from './login.component';
+import {GetReportComponent} from './get-report.component';
 
 const routes: RouterConfig = [
-  {
-    path: 'heroes',
-    component: HeroesComponent
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
   {
     path: 'login',
     component: LoginComponent
   },
   {
-    path: 'detail/:id',
-    component: HeroDetailComponent
-  },
-
-];
-
+    path: 'getReport',
+    component: GetReportComponent
+  }
+]
 export const appRouterProviders = [
   provideRouter(routes)
 ];

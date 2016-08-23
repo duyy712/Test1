@@ -8,20 +8,20 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../styles.css" rel="stylesheet">
 </head>
-
 <body>
     <h2> Login Page</h2>
-    <fieldset class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]='reqBody.username' />
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]='reqBody.password' />
-    </fieldset>
-
-    <button type="button" class="btn btn-primary" (click)=onSubmit(reqBody.username,reqBody.password)>Submit</button>
+    <form [(ngFormModel)]="loginForm">
+        <label for="username">Username: </label>
+        <input ngControl="username"><span *ngIf="!ctrlUsr.valid"> [required] </span><br>
+        <label for="password">Password: </label>
+        <input ngControl="password" type="password"><span *ngIf="!ctrlPwd.valid"> [required] </span><br>
+        <button type="button" class="btn btn-primary" (click)=onSubmit()>Submit</button>
+     
+    </form>
+    <pre> {{getValue()}}</pre>   
+       
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"> </script>
 </body>
 
 </html>
